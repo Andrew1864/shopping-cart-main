@@ -11,8 +11,8 @@ import { addProductToBasket } from './productService'
  * @param {string} product.imgSrc - Ссылка на изображение товара
  * @param {string} product.category - Категория товара
  */
-export const generateProductCardHTML = (product) => {
-  if (productList) {
+export const generateProductCardHTML = (product, parentNode) => {
+  if (parentNode) {
     const cardHTML = `
     <div class="main-card" data-id="${product?.id}">
       <div class="card-image">
@@ -38,7 +38,7 @@ export const generateProductCardHTML = (product) => {
     </div>
   `
     // Вставка шаблона
-    productList.insertAdjacentHTML('beforeend', cardHTML)
+    parentNode.insertAdjacentHTML('beforeend', cardHTML)
 
     // Получение всех кнопок
     const addProductToBasketBtns = document.querySelectorAll('.btn-primary')
